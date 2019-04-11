@@ -1,0 +1,25 @@
+{
+  "name": "newsscrape",
+  "version": "1.0.0",
+  "description": "week 18 homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurenkerns/newsScrape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurenkerns/newsScrape/issues"
+  },
+  "homepage": "https://github.com/laurenkerns/newsScrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.1"
+  }
+}
