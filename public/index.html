@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>News Scraper</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/materia/bootstrap.min.css"/> -->
+  </head>
+  <body>
+
+<!--NAV BAR-->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo">News Scraper</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/">Home</a></li>
+                <li><a href="badges.html">Saved Articles</a></li>
+                <li><a href="/scrape"><a class="waves-effect waves-light btn">Scrape New Articles</a></a></li>
+                <li><a href=""><a class="waves-effect waves-light btn">Clear Articles</a></a></li>
+            </ul>
+         </div>
+    </nav>
+<!--END NAV BAR-->
+
+<!--ARTICLES & NOTES-->                     
+    <div id="wrapper">
+
+      <div id="articles"></div>
+      <div id="notes"></div>
+    </div>
+<!--END ARTICLES & NOTES-->
+
+<!--FOOTER-->
+<footer class="page-footer"> Mongo News Scraper </footer>         
+<!--END FOOTER-->
+  </body>
+</html>

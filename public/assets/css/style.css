@@ -1,0 +1,49 @@
+body{
+  background-image: url("http://www.superiorwallpapers.com/images/lthumbs/2017-04/12321_Hot-coffee-and-News-in-the-morning-HD-wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-wrapper{
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+.page-footer{
+  margin-top: 2%;
+  padding-left: 1%;
+  padding-bottom: 1%;
+}
+
+#wrapper {
+  background-color: white;
+  margin-top: 10%;
+  padding: 2%;
+  opacity: 0.90;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#articles {
+  display: inline-block;
+  overflow: auto;
+  width: 60%;
+  height: 700px;
+}
+#notes {
+  float: right;
+  width: 30%;
+}
+textarea, input {
+  display: block;
+  width: 100%;
+  background-color: #FCF5C7;
+}
+input {
+  height: 36px;
+  font-size: 24px;
+}
+textarea {
+  height: 200px;
+  font-size: 18px;
+}
