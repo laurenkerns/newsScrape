@@ -3,13 +3,16 @@ $.getJSON("/articles", data => {
     // For each one
     for (let i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href=" + data[i].link + "> " + data[i].link + "</a> " + "<br />" +
+          "<button class='btn' id='note' data-id=" + data[i]._id + ">Article Notes</button>" +
+          "<button class='btn' id='save'  data-id=" + data[i]._id + ">Save Article</button>" +
+          "<button class='btn' id='delete'  data-id=" + data[i]._id + ">Delete Article</button>" + "</p>");
     }
   });
   
   
   // Whenever someone clicks a p tag
-  $(document).on("click", "p", function() {
+  $(document).on("click", "#note", function() {
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
@@ -70,4 +73,44 @@ $.getJSON("/articles", data => {
     $("#titleinput").val("");
     $("#bodyinput").val("");
   });
+
+    $(document).on("click", "#save", function() {
+      window.location.reload();
+      let thisId = $(this).attr("data-id");
+
+    //ajax call
+    $.ajax({
+      method: "POST",
+      url: "/saved" + thisId
+    })
+      .then(function(data) {
+        console.log(data);
+      });
+    });
+
+    $(document).on("click", "#delete", function (){
+      let thisId = $(this).attr("data-id");
+      console.log("delete sucessful");
+      window.location.reload();
+
+      $.ajax({
+        method: "DELETE",
+        url: "/articles/" + thisId,
+      })
+        .then(function(data){
+
+        });
+    });
+
+    $.getJSON("/saved", function (data) {
+      for (let i = 0; i < data.length; i++){
+        $("#saved").append("<p data-id='" + data[i]._id + "'>" +
+      data[i].title + "<br />" +
+      "<a href=" + data[i].link + "> " + data[i].link + "</a> " + "<br />" +
+      "<button class='btn' id='noteBtn' data-id=" + data[i]._id + ">Article Notes</button>" +
+      "<button class='btn' id='delete'  data-id=" + data[i]._id + ">Delete Article</button>" + "</p>");
+  }
+  console.log(data)
+    });
+
   
