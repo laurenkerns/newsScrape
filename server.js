@@ -117,6 +117,33 @@ app.post("/articles/:id", (req, res) => {
 
 
 
+//////route for delete//////////////
+app.delete("/articles/:id", (req, res) => {
+  db.Article.deleteOne({ _id: req.params.id })
+    .then (dbArticle => {
+      db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true }, { new: true });
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+
+
+
+
+///////route for saved////////////
+app.post("/saved/:id", (req, res) => {
+  db.Article.findByIdAndUpdate({ _id: req.params.id }, { saved: true }, { new: true })
+    .then (dbArticle => {
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      res.json(err);
+    });
+});
+
+
 ///////////////////LISTEN///////////////////////////
 app.listen(PORT, () => {
     // Log (server-side) when our server has started

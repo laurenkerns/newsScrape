@@ -13,8 +13,8 @@ $.getJSON("/articles", data => {
 /////ON CLICK FUNCTION for note button
 $(document).on("click", "#noteBtn", function() {
   $("#notes").empty();
-  // Save the id from the p tag
-  const thisId = $(this).attr("data-id");
+  // Save the id
+  let thisId = $(this).attr("data-id");
 
   /////// ajax call for article
   $.ajax({
@@ -51,7 +51,7 @@ $(document).on("click", "#noteBtn", function() {
 /////ON CLICK SAVE NOTE  
   $(document).on("click", "#savenote", function() {
   // GRAB ID
-  const thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
 
   // POST REQUEST TO CHANGE NOTE
   $.ajax({
@@ -77,7 +77,7 @@ $(document).on("click", "#noteBtn", function() {
 ///////ON CLICK FUNCTION TO SAVE
 $(document).on("click", "#save", function () {
   /////GRAB ID
-  const thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
 
   ////POST REQUEST TO UPDATE NOTE
   $.ajax({
@@ -93,7 +93,7 @@ $(document).on("click", "#save", function () {
 
 //////ON CLICK TO DELETE NOTE
 $(document).on("click", "#delete", function () {
-  const thisId = $(this).attr("data-id");
+  let thisId = $(this).attr("data-id");
   
   //////reload the page 
   window.location.reload();
