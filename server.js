@@ -74,16 +74,15 @@ app.get("/articles", (req, res) => {
 
 
 /////route for saved articles///////
-app.get("/saved", (req, res) => {
+app.get("/saved", function (req, res) {
   db.Article.find({ "saved": true })   
-    .then(dbArticle => {
+    .then(function (dbArticle) {
       res.json(dbArticle);
     })
-      .catch(err => {
+      .catch(function (err) {
         res.json(err);
       });
 });
-
 
 
 
