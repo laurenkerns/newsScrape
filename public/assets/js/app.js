@@ -1,14 +1,16 @@
 ////// Grab the articles as a json//////
-$.getJSON("/articles", data => {
-  for (let i = 0; i < data.length; i++) {
-   
-    ////// Display information on the page///////
-    $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href=" + data[i].link + "> " + data[i].link + "</a> " + "<br />" +
-      "<button class='waves-effect waves-light btn' id='noteBtn' data-id=" + data[i]._id + ">Make Note</button>" +
-      "<button class='waves-effect waves-light btn' id='save'  data-id=" + data[i]._id + ">Save</button>" +
-      "<button class='waves-effect waves-light btn' id='delete'  data-id=" + data[i]._id + ">Delete</button>" + "</p>");
-  }
-});
+$(document).ready(function() {
+  $.getJSON("/articles", data => {
+    for (let i = 0; i < data.length; i++) {
+     
+      ////// Display information on the page///////
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href=" + data[i].link + "> " + data[i].link + "</a> " + "<br />" +
+        "<button class='waves-effect waves-light btn' id='noteBtn' data-id=" + data[i]._id + ">Make Note</button>" +
+        "<button class='waves-effect waves-light btn' id='save'  data-id=" + data[i]._id + ">Save</button>" +
+        "<button class='waves-effect waves-light btn' id='delete'  data-id=" + data[i]._id + ">Delete</button>" + "</p>");
+    }
+  });
+  
 
 /////ON CLICK FUNCTION for note button
 $(document).on("click", "#noteBtn", function() {
@@ -121,5 +123,6 @@ $.getJSON("/saved", function (data) {
         "<button class='waves-effect waves-light btn' id='noteBtn' data-id=" + data[i]._id + ">Article Notes</button>" +
         "<button class='waves-effect waves-light btn' id='delete'  data-id=" + data[i]._id + ">Delete Article</button>" + "</p>");
   }
+});
 });
   
