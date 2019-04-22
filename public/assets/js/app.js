@@ -4,9 +4,9 @@ $.getJSON("/articles", data => {
    
     ////// Display information on the page///////
     $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href=" + data[i].link + "> " + data[i].link + "</a> " + "<br />" +
-      "<button class='waves-effect waves-light btn' id='noteBtn' data-id=" + data[i]._id + ">Article Notes</button>" +
-      "<button class='waves-effect waves-light btn' id='save'  data-id=" + data[i]._id + ">Save Article</button>" +
-      "<button class='waves-effect waves-light btn' id='delete'  data-id=" + data[i]._id + ">Delete Article</button>" + "</p>");
+      "<button class='waves-effect waves-light btn' id='noteBtn' data-id=" + data[i]._id + ">Make Note</button>" +
+      "<button class='waves-effect waves-light btn' id='save'  data-id=" + data[i]._id + ">Save</button>" +
+      "<button class='waves-effect waves-light btn' id='delete'  data-id=" + data[i]._id + ">Delete</button>" + "</p>");
   }
 });
 
@@ -26,16 +26,16 @@ $(document).on("click", "#noteBtn", function() {
     .then(function(data) {
       console.log(data);
       /////TITLE
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h3>" + data.title + "</h3>");
 
       ///// An INPUT TO ENTER TITLE
-      $("#notes").append("<input id='titleinput' name='title' >");
+      $("#notes").append("<input id='titleinput' name='title' placeholder='note title' >");
 
       ///// TEXT AREA
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
 
       // SUBMIT BUTTON
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>"); ////add class
+      $("#notes").append("<button class='waves-effect waves-light btn data-id='" + data._id + "' id='savenote'>Save Note</button>"); ////add class
 
       //////IF NO NOTE
       if (data.note) {

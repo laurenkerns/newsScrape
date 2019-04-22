@@ -6,12 +6,9 @@ const logger = require("morgan");
 // Require axios and cheerio. This makes the scraping possible
 const axios = require("axios");
 const cheerio = require("cheerio");
-
 //require all models
 const db = require("./models");
-
-const PORT = 3003;
-
+const PORT = 8080;
 // Initialize Express
 const app = express();
 
@@ -27,20 +24,23 @@ app.use(express.static("public"));
 
 
 //////////Connect to Mongo Database///////////////
-// mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true })
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI);
+// mongoose.connect("mongodb://localhost/mongo", { useNewUrlParser: true })
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongo";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 ///////////////ROUTES//////////////////
 
+//homepage
+app.get("/", (req, res) => res.render("index"));
 
-////////Route to scrape NY TImes website /////////
+
+////////Route to scrape articles /////////
 app.get("/scrape", (req, res) => {
-  axios.get("https://www.nytimes.com/section/arts/").then(response => {
+  axios.get("https://www.heraldsun.com/news/local/").then(response => {
     //load into cherro
     const $ = cheerio.load(response.data);
     //grab all H2's and links
-    $("article h2").each((i, element) => {
+    $("article h3").each((i, element) => {
       const result = {};
         result.title = $(element).children("a").text();
         result.link = $(element).children("a").attr("href");
@@ -50,13 +50,14 @@ app.get("/scrape", (req, res) => {
           console.log(dbArticle);
         })
         .catch(err => {
-          console.log(err);
+          console.log(err)
         });
     });
     //redirect to homepage
     res.redirect('/')
   });
 });
+
 
 
 
@@ -126,8 +127,6 @@ app.delete("/articles/:id", (req, res) => {
       res.json(err);
     });
 });
-
-
 
 
 
